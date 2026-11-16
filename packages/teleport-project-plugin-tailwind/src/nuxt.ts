@@ -15,7 +15,7 @@ export const nuxtTailwindModifier = async (params: TailwindPluginParams): Promis
 
   const projectSheet = files
     .get('projectStyleSheet')
-    ?.files.find((file) => file.name === 'style' && file.fileType === FileType.CSS)
+    ?.files.find((file) => file.name === 'global-style' && file.fileType === FileType.CSS)
   let globalStyleSheet = css
 
   if (projectSheet) {
@@ -55,7 +55,7 @@ export const nuxtTailwindModifier = async (params: TailwindPluginParams): Promis
         name: 'nuxt.config',
         fileType: FileType.JS,
         content: `export default {
-  css: ["~/style.css"],
+  css: ["~/global-style.css"],
   buildModules: ["@nuxt/postcss8"],
   build: {
     postcss: {

@@ -395,7 +395,7 @@ export class ProjectGenerator implements ProjectGeneratorType {
       // the strategy declares `isGlobalStylesDependent` (Next's `_app.js`,
       // Nuxt's config), but the style sheet generator emits NO file when the
       // UIDL carries neither style sets nor design tokens — leaving an import
-      // of a `style.css` that was never written, which fails the build with the
+      // of a `global-style.css` that was never written, which fails the build with the
       // same "Module not found" as any other dangling local import. Emit the
       // empty sheet that import promises. Project plugins that take the import
       // away (styled-components, css-modules, react-jss) set the flag to false

@@ -5,7 +5,7 @@ import { ProjectPluginStructure } from '@teleporthq/teleport-types'
  * existing import. Idempotent: a second call with the same line is a no-op.
  *
  * Inserting before the first import keeps injected stylesheet imports ahead
- * of `import './style.css'`, so project styles win over library styles on
+ * of `import './global-style.css'`, so project styles win over library styles on
  * equal specificity.
  */
 export const injectImportIntoApp = (

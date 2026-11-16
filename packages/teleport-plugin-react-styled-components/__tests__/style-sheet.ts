@@ -84,7 +84,7 @@ describe('Style Sheet from styled components', () => {
 
     const result = await plugin(structure)
     const { chunks, dependencies } = result
-    const styleChunks = chunks.filter((chunk) => chunk.name === 'style')
+    const styleChunks = chunks.filter((chunk) => chunk.name === 'global-style')
 
     expect(styleChunks.length).toBe(1)
     expect(dependencies.variant.path).toBe('styled-system')

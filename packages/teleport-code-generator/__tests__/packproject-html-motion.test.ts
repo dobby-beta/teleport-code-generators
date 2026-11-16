@@ -61,7 +61,7 @@ describe('packProject, HTML: a downloaded site plays its motion', () => {
     const home = readFileSync(join(root, 'index.html'), 'utf8')
     expect(home).toContain('data-scene-stage="true"')
     expect(home).toContain('<script defer src="./tq-motion.js"></script>')
-    const css = readFileSync(join(root, 'style.css'), 'utf8')
+    const css = readFileSync(join(root, 'global-style.css'), 'utf8')
     expect(css).toContain('position: sticky !important;')
     // the site's page transition travels too, with the back-button script in the page head
     expect(css).toContain('@view-transition')

@@ -35,9 +35,9 @@ describe('Generates NEXT-JS project with plugins', () => {
     expect(middleware?.content).toContain('__tqWallGate')
     expect(pages.files.length).toBe(6)
     expect(styleModule).toBeDefined()
-    expect(styleModule.name).toBe('style.module')
+    expect(styleModule.name).toBe('global-style.module')
     expect(appRoot).toBeDefined()
-    expect(appRoot.content).toContain(`import './style.module.css'`)
+    expect(appRoot.content).toContain(`import './global-style.module.css'`)
   })
 
   it('NEXT + StyledComponents', async () => {
@@ -49,7 +49,7 @@ describe('Generates NEXT-JS project with plugins', () => {
     const packgeJSON = result.files.find((file) => file.name === 'package')
     const pages = result.subFolders.find((folder) => folder.name === 'pages')
     const styleModule = pages.files.find(
-      (file) => file.name === 'style' && file.fileType === FileType.JS
+      (file) => file.name === 'global-style' && file.fileType === FileType.JS
     )
     const document = pages.files.find(
       (file) => file.name === '_document' && file.fileType === FileType.JS
@@ -70,6 +70,6 @@ describe('Generates NEXT-JS project with plugins', () => {
     expect(document.content).toContain(`import { ServerStyleSheet } from 'styled-components'`)
     expect(document.content).toContain(`const sheet = new ServerStyleSheet()`)
     expect(document.content).toContain(`{this.props.styleTags}`)
-    expect(appFile.content).not.toContain(`import "./style.css"`)
+    expect(appFile.content).not.toContain(`import "./global-style.css"`)
   })
 })

@@ -50,7 +50,7 @@ describe('Plugins adds tailwind as devDependnecy when used with Next', () => {
     structure.files.set('projectStyleSheet', {
       files: [
         {
-          name: 'style',
+          name: 'global-style',
           fileType: FileType.CSS,
           content: ``,
         },

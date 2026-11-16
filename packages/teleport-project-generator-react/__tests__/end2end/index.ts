@@ -82,7 +82,7 @@ describe('React Project Generator', () => {
     expect(packageJSON.name).toBe('package')
     expect(srcFolder.files[0].name).toBe('index')
     expect(srcFolder.files[0].fileType).toBe('js')
-    expect(srcFolder.files[0].content).not.toContain(`import './style.css'`)
+    expect(srcFolder.files[0].content).not.toContain(`import './global-style.css'`)
     expect(publicFolder.files[0].name).toBe('manifest')
     expect(publicFolder.files[0].fileType).toBe('json')
     expect(publicFolder.files[1].name).toBe('index')
@@ -131,7 +131,7 @@ describe('React Project Generator', () => {
     const result = await generator.generateProject(uidlSampleWithJustTokens, template)
     const srcFolder = result.subFolders.find((folder) => folder.name === 'src')
     const styleSheet = srcFolder?.files.find(
-      (file) => file.name === 'style' && file.fileType === FileType.CSS
+      (file) => file.name === 'global-style' && file.fileType === FileType.CSS
     )
     const index = srcFolder?.files.find(
       (file) => file.name === 'index' && file.fileType === FileType.JS
@@ -140,7 +140,7 @@ describe('React Project Generator', () => {
     expect(styleSheet).toBeDefined()
     expect(styleSheet?.content).toContain(`--greys-500: #595959`)
     expect(index).toBeDefined()
-    expect(index?.content).toContain(`import './style.css'`)
+    expect(index?.content).toContain(`import './global-style.css'`)
   })
 
   it('creates a default route if a page is marked as fallback', async () => {

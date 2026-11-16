@@ -14,7 +14,7 @@ interface StyleSheetPlugin {
 }
 
 export const createStyleSheetPlugin: ComponentPluginFactory<StyleSheetPlugin> = (config) => {
-  const { fileName = 'style' } = config || {}
+  const { fileName = 'global-style' } = config || {}
 
   const styleSheetPlugin: ComponentPlugin = async (structure) => {
     const { uidl, chunks, dependencies } = structure

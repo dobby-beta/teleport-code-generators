@@ -600,7 +600,7 @@ function classNameForNode(componentName, elementName) {
 }
 
 // Project-referenced style maps: the React generator emits these as
-// className references into the project-wide stylesheet (pages/style.css).
+// className references into the project-wide stylesheet (pages/global-style.css).
 // We already inline that stylesheet into the rendered HTML, so all we
 // need is the referenceId as an additional class on the element.
 function collectReferencedStyleClasses(referencedStyles) {
@@ -977,7 +977,7 @@ function elementTypeToTag(et) {
 }
 
 // ---------------------------------------------------------------------------
-// Global project CSS — read from \`pages/style.css\` at runtime so the
+// Global project CSS — read from \`pages/global-style.css\` at runtime so the
 // invoice inherits font faces, CSS variables, and any design-system
 // tokens the rest of the site uses. Missing file is not fatal — some
 // projects centralise CSS elsewhere; the external PDF service still
@@ -988,7 +988,7 @@ var __cachedGlobalCss = null;
 function readGlobalCss() {
   if (__cachedGlobalCss != null) return __cachedGlobalCss;
   var candidates = [
-    path.join(process.cwd(), 'pages', 'style.css'),
+    path.join(process.cwd(), 'pages', 'global-style.css'),
     path.join(process.cwd(), 'styles', 'globals.css'),
     path.join(process.cwd(), 'styles', 'style.css'),
   ];

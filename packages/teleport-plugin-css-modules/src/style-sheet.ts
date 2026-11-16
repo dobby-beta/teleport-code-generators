@@ -15,7 +15,7 @@ interface StyleSheetPlugin {
 }
 
 const defaultConfig = {
-  fileName: 'style',
+  fileName: 'global-style',
   moduleExtension: false,
   relativeFontPath: false,
 }

@@ -295,7 +295,7 @@ describe('The flying image between pages', () => {
     // the transition itself is untouched
     expect(plan?.css).toContain('::view-transition-old(root)')
     const folder = await generate(projectWith(off))
-    expect(fileOf(folder, 'style', FileType.CSS)).not.toContain('tq-morph')
+    expect(fileOf(folder, 'global-style', FileType.CSS)).not.toContain('tq-morph')
     const home = fileOf(folder, 'index', FileType.HTML)
     expect(home).not.toContain('tqMorph')
     expect(home).not.toContain("addEventListener('pageswap'")
@@ -324,7 +324,7 @@ describe('The page transition of a static HTML export: what the pages get', () =
       projectWith({ preset: 'fade', duration: 0.3, easing: 'ease-out' })
     )
 
-    expect(fileOf(folder, 'style', FileType.CSS)).toContain('@view-transition')
+    expect(fileOf(folder, 'global-style', FileType.CSS)).toContain('@view-transition')
     folder.files
       .filter((file) => file.fileType === FileType.HTML)
       .forEach((file) => {

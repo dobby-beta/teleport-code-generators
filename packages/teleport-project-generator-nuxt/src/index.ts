@@ -14,7 +14,7 @@ import { nuxtErrorPageMapper } from './error-page-mapping'
 
 const createNuxtProjectGenerator = () => {
   const styleSheetPlugin = createStyleSheetPlugin({
-    fileName: 'style',
+    fileName: 'global-style',
   })
 
   const generator = createProjectGenerator({
@@ -44,7 +44,7 @@ const createNuxtProjectGenerator = () => {
     projectStyleSheet: {
       generator: createComponentGenerator,
       plugins: [styleSheetPlugin],
-      fileName: 'style',
+      fileName: 'global-style',
       path: [''],
     },
     framework: {

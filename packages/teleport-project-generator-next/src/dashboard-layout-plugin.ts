@@ -284,7 +284,7 @@ export class NextDashboardLayoutPlugin implements ProjectPlugin {
         cssFile.content = cssFile.content + '\n\n' + DASHBOARD_CSS
       } else {
         stylesheetEntry.files.push({
-          name: 'style',
+          name: 'global-style',
           fileType: FileType.CSS,
           content: DASHBOARD_CSS,
         })
@@ -294,7 +294,7 @@ export class NextDashboardLayoutPlugin implements ProjectPlugin {
         path: ['pages'],
         files: [
           {
-            name: 'style',
+            name: 'global-style',
             fileType: FileType.CSS,
             content: DASHBOARD_CSS,
           },

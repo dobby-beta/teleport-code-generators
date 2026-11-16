@@ -166,7 +166,7 @@ class NextPartialGenerator {
 
     // Stylesheet generator — same config as createNextProjectGenerator().projectStyleSheet
     this.styleSheetGenerator = createComponentGenerator({
-      plugins: [createStyleSheetPlugin({ fileName: 'style' })],
+      plugins: [createStyleSheetPlugin({ fileName: 'global-style' })],
     })
   }
 
