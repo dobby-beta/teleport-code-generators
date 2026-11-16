@@ -33,6 +33,9 @@ module.exports = {
     '^html-whitespace-sensitive-tag-names$':
       '<rootDir>/test-mocks/html-whitespace-sensitive-tag-names.json'
   },
+  // packProject tests build whole projects on disk; they take ~1s alone but
+  // pass the 5s default when the full suite runs in parallel.
+  "testTimeout": 60000,
   "collectCoverage": false,
   "testEnvironment": "node",
   "collectCoverageFrom": [
