@@ -217,6 +217,26 @@ describe('Validate UIDL', () => {
       //       )
     })
 
+    it('throws when more than one route is set as fallback', () => {
+      const validator = new Validator()
+      const uidlWithFallbacks = JSON.parse(JSON.stringify(projectUidlSample))
+      const routes = uidlWithFallbacks.root.stateDefinitions.route.values
+      routes[0].pageOptions.fallback = true
+      routes[2].pageOptions.fallback = true
+
+      expect(() => validator.validateProjectContent(uidlWithFallbacks)).toThrow(
+        'Found 2 routes with fallback enabled: "index", "contact-us".'
+      )
+    })
+
+    it('passes when a single route is set as fallback', () => {
+      const validator = new Validator()
+      const uidlWithFallback = JSON.parse(JSON.stringify(projectUidlSample))
+      uidlWithFallback.root.stateDefinitions.route.values[1].pageOptions.fallback = true
+
+      expect(validator.validateProjectContent(uidlWithFallback).valid).toEqual(true)
+    })
+
     it('returns error if route is missing from state definitions', () => {
       const validator = new Validator()
       // @ts-ignore
