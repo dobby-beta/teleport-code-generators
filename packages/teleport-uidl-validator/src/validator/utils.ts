@@ -552,6 +552,22 @@ export const checkRootComponent = (input: ProjectUIDL) => {
   return errors
 }
 
+// A project can have only one route marked as fallback
+export const checkFallbackRoutes = (input: ProjectUIDL) => {
+  const fallbackRoutes = (input.root.stateDefinitions.route.values || []).filter(
+    (route) => route.pageOptions?.fallback === true
+  )
+
+  if (fallbackRoutes.length <= 1) {
+    return []
+  }
+
+  const names = fallbackRoutes.map((route) => `"${route.value}"`).join(', ')
+  return [
+    `\nOnly one route can be set as the fallback route. Found ${fallbackRoutes.length} routes with fallback enabled: ${names}.`,
+  ]
+}
+
 // The errors should be displayed in a human-readeable way
 export const formatErrors = (errors: Array<{ kind: string; at: string; message: string }>) => {
   const listOfErrors: string[] = []
