@@ -11,6 +11,7 @@ import { configContentGenerator } from './utils'
 import { NuxtProjectMapping } from './nuxt-project-mapping'
 import NuxtTemplate from './project-template'
 import { nuxtErrorPageMapper } from './error-page-mapping'
+import { nuxtLottiePlugin } from './lottie-plugin'
 
 const createNuxtProjectGenerator = () => {
   const styleSheetPlugin = createStyleSheetPlugin({
@@ -63,6 +64,8 @@ const createNuxtProjectGenerator = () => {
       path: ['static'],
     },
   })
+
+  generator.addPlugin(nuxtLottiePlugin)
 
   return generator
 }

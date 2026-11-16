@@ -5,6 +5,7 @@ import {
   FileType,
 } from '@teleporthq/teleport-types'
 import * as types from '@babel/types'
+import { NUXT_LOTTIE_PACKAGE, NUXT_LOTTIE_PLUGIN_PATH } from './lottie-plugin'
 
 export const configContentGenerator = (options: FrameWorkConfigOptions, t = types) => {
   const result = {
@@ -29,20 +30,24 @@ export const configContentGenerator = (options: FrameWorkConfigOptions, t = type
             ),
           ])
         ),
-        t.objectProperty(
-          t.identifier('plugins'),
-          t.arrayExpression([
-            t.templateLiteral(
-              [
-                t.templateElement({
-                  raw: `~/plugins/lottie-vue-player.client.js`,
-                  cooked: `~/plugins/lottie-vue-player.client.js`,
-                }),
-              ],
-              []
-            ),
-          ])
-        ),
+        ...(options.dependencies[NUXT_LOTTIE_PACKAGE]
+          ? [
+              t.objectProperty(
+                t.identifier('plugins'),
+                t.arrayExpression([
+                  t.templateLiteral(
+                    [
+                      t.templateElement({
+                        raw: NUXT_LOTTIE_PLUGIN_PATH,
+                        cooked: NUXT_LOTTIE_PLUGIN_PATH,
+                      }),
+                    ],
+                    []
+                  ),
+                ])
+              ),
+            ]
+          : []),
       ])
     )
 
