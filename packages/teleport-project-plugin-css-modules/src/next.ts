@@ -98,7 +98,7 @@ export const nextBeforeModifier = async (structure: ProjectPluginStructure) => {
 export const nextAfterModifier = async (structure: ProjectPluginStructure) => {
   const { files } = structure
   const appFileContent = files.get('_app').files[0].content
-  const content = `import "./style.module.css" \n
+  const content = `import "./global-style.module.css" \n
     ${appFileContent}
     `
 

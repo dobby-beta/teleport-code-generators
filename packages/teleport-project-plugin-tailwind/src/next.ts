@@ -9,7 +9,7 @@ export const nextJSTailwindModifier = async (params: TailwindPluginParams): Prom
 
   const projectSheet = files
     .get('projectStyleSheet')
-    ?.files.find((file) => file.name === 'style' && file.fileType === FileType.CSS)
+    ?.files.find((file) => file.name === 'global-style' && file.fileType === FileType.CSS)
 
   if (projectSheet) {
     files.delete('projectStyleSheet')

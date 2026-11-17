@@ -167,7 +167,7 @@ describe('Motion in the static HTML export', () => {
   it('a scene that does not pin keeps its children as they are: no stage, no length rule', async () => {
     const folder = await generate(projectWith(UNPINNED_SCENE))
     const page = fileOf(folder, 'index', FileType.HTML)
-    const css = fileOf(folder, 'style', FileType.CSS)
+    const css = fileOf(folder, 'global-style', FileType.CSS)
 
     expect(page).toContain('data-scene-pin="false"')
     expect(page).not.toContain('data-scene-stage=')
@@ -176,7 +176,7 @@ describe('Motion in the static HTML export', () => {
 
   it('lays the scene out in the stylesheet, only on a page that said it will be animated', async () => {
     const folder = await generate(projectWith(SCENE))
-    const css = fileOf(folder, 'style', FileType.CSS)
+    const css = fileOf(folder, 'global-style', FileType.CSS)
 
     expect(css).toContain(
       ':where(html[data-tq-motion-on]) [data-scene-track][data-scene-pin="true"][data-scene-length="400vh"] {\n  min-height: 400vh !important;'
@@ -213,7 +213,7 @@ describe('Motion in the static HTML export', () => {
       y: 0,
     })
 
-    const css = fileOf(folder, 'style', FileType.CSS)
+    const css = fileOf(folder, 'global-style', FileType.CSS)
     expect(css).toContain(':not([data-motion-ready]) {\n  visibility: hidden;')
     expect(css).toContain('@media (prefers-reduced-motion: reduce)')
   })

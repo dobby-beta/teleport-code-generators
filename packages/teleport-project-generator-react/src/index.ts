@@ -31,7 +31,7 @@ const createReactProjectGenerator = () => {
     projectStyleSheet: {
       generator: createComponentGenerator,
       plugins: [createStyleSheetPlugin()],
-      fileName: 'style',
+      fileName: 'global-style',
       path: ['src'],
       importFile: true,
     },

@@ -177,7 +177,7 @@ const result = await partial.generateComponent(componentUIDL)
 
 Generates the global CSS stylesheet from `styleSetDefinitions`.
 
-**Output path:** `pages/style.css`
+**Output path:** `pages/global-style.css`
 
 **Input:** The root `ComponentUIDL` (contains `styleSetDefinitions` and `designLanguage`):
 
@@ -216,11 +216,13 @@ const result = partial.generateFrameworkConfig({
   dependencies: hasI18n ? { 'next-intl': '^2.0.0' } : {},
   globalStyles: {
     path: './',
-    sheetName: 'style',
+    sheetName: 'global-style', // optional; defaults to GLOBAL_STYLESHEET_NAME
     isGlobalStylesDependent: true,
   },
 })
 ```
+
+`sheetName` must match the stylesheet written by `generateStyleSheet()`, which is `global-style` (exported as `GLOBAL_STYLESHEET_NAME`). It was `style` in earlier versions: callers that still pass `sheetName: 'style'` must switch to `global-style` (or omit it), or `_app.js` will import a file that is no longer written.
 
 ---
 
@@ -357,7 +359,7 @@ partial.updateOptions({
 | Create new page | `generatePage()` | New page `.js` file |
 | Create new component | `generateComponent()` | New component `.js` file |
 | Bind data source to a node | `generatePage()` or `generateComponent()` | Page/component `.js` + `extractedResources` (utils + API routes) |
-| Change design tokens / CSS classes | `generateStyleSheet()` | `style.css` |
+| Change design tokens / CSS classes | `generateStyleSheet()` | `global-style.css` |
 | Change project settings (title, assets, fonts) | `generateEntryFile()` | `_document.js` |
 | Toggle i18n / add language | `generateFrameworkConfig()` + `generateLocaleFiles()` + `generateGlobalContext()` + `generateNextConfig()` | `_app.js`, locale JSONs, `global-context.js`, `next.config.js` |
 | Edit translation text | `generateLocaleFiles()` | Affected `locales/{locale}.json` |
@@ -375,7 +377,7 @@ When all generators run, the combined output produces:
 pages/
   _document.js              ← generateEntryFile()
   _app.js                   ← generateFrameworkConfig()
-  style.css                 ← generateStyleSheet()
+  global-style.css          ← generateStyleSheet()
   index.js                  ← generatePage() (home page)
   courses.js                ← generatePage()
   posts/

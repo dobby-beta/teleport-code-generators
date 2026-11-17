@@ -159,7 +159,7 @@ const createNextProjectGenerator = () => {
     isDefaultImport: true,
   })
   const styleSheetPlugin = createStyleSheetPlugin({
-    fileName: 'style',
+    fileName: 'global-style',
   })
 
   const getStaticPropsPlugin = createStaticPropsPlugin()
@@ -269,7 +269,7 @@ const createNextProjectGenerator = () => {
     projectStyleSheet: {
       generator: createComponentGenerator,
       plugins: [styleSheetPlugin],
-      fileName: 'style',
+      fileName: 'global-style',
       path: ['pages'],
     },
     entry: {
@@ -368,7 +368,7 @@ export {
   createNextPagesDataSourcePlugin,
   createNextComponentDataSourcePlugin,
 } from '@teleporthq/teleport-plugin-next-data-source'
-export { createNextPartialGenerator } from './partial'
+export { createNextPartialGenerator, GLOBAL_STYLESHEET_NAME } from './partial'
 export type {
   NextPartialGeneratorOptions,
   PartialGenerationResult,

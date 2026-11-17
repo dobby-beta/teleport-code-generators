@@ -133,7 +133,7 @@ export const splitProjectUIDL = (
     ...(Object.keys(styleSetDefinitions).length > 0 && {
       projectStyleSet: {
         styleSetDefinitions,
-        fileName: 'style',
+        fileName: 'global-style',
         path: GenericUtils.generateLocalDependenciesPrefix(pagesPath, pagesPath),
         importFile: false,
       },

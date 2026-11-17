@@ -148,7 +148,7 @@ const run = async () => {
     dependencies: hasI18n ? { 'next-intl': '^2.0.0' } : {},
     globalStyles: {
       path: './',
-      sheetName: 'style',
+      sheetName: 'global-style',
       isGlobalStylesDependent: true,
     },
   })

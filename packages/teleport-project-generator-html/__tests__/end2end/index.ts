@@ -98,7 +98,7 @@ describe('Html Project Generator', () => {
     const snapped = await generator.generateProject(uidl, HTMLTemplate)
 
     const globalCss = snapped.files.find(
-      (file) => file.name === 'style' && file.fileType === FileType.CSS
+      (file) => file.name === 'global-style' && file.fileType === FileType.CSS
     )
     const aboutPage = snapped.files.find(
       (file) => file.name === 'about' && file.fileType === FileType.HTML
@@ -134,7 +134,7 @@ describe('Html Project Generator', () => {
     const railed = await generator.generateProject(uidl, HTMLTemplate)
 
     const globalCss = railed.files.find(
-      (file) => file.name === 'style' && file.fileType === FileType.CSS
+      (file) => file.name === 'global-style' && file.fileType === FileType.CSS
     )
     const aboutPage = railed.files.find(
       (file) => file.name === 'about' && file.fileType === FileType.HTML

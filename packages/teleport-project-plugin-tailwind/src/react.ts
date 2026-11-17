@@ -9,7 +9,7 @@ export const reactTailwindModifier = async (params: TailwindPluginParams): Promi
 
   const projectSheet = files
     .get('projectStyleSheet')
-    ?.files.find((file) => file.name === 'style' && file.fileType === FileType.CSS)
+    ?.files.find((file) => file.name === 'global-style' && file.fileType === FileType.CSS)
   let globalStyleSheet = css
 
   if (projectSheet) {

@@ -9,7 +9,7 @@ export const defaultTailwindModifier = async (params: TailwindPluginParams): Pro
 
   const projectSheet = files
     .get('projectStyleSheet')
-    ?.files.find((file) => file.name === 'style' && file.fileType === FileType.CSS)
+    ?.files.find((file) => file.name === 'global-style' && file.fileType === FileType.CSS)
   let globalStyleSheet = css
 
   if (projectSheet) {
@@ -24,7 +24,7 @@ export const defaultTailwindModifier = async (params: TailwindPluginParams): Pro
       const jsonContent = JSON.parse(file.content)
       jsonContent.scripts = {
         ...jsonContent?.scripts,
-        tailwind: 'tailwindcss -o style.css -c ./tailwind.config.js',
+        tailwind: 'tailwindcss -o global-style.css -c ./tailwind.config.js',
       }
       file.content = JSON.stringify(jsonContent, null, 2)
     }

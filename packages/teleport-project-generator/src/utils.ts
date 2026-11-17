@@ -94,6 +94,17 @@ const createPageUIDL = (
         folderPath: [...navLink.split('/').slice(1, -1)],
       }
 
+  // A page sheet must never land on the project sheet's file (a page called `global-style`),
+  // or both imports would point at the same path and merge into one.
+  const projectSheet = strategy.projectStyleSheet
+  if (
+    projectSheet &&
+    outputOptions.styleFileName === projectSheet.fileName &&
+    equalPaths(strategy.pages.path.concat(outputOptions.folderPath), projectSheet.path)
+  ) {
+    outputOptions.styleFileName = `${outputOptions.styleFileName}-page`
+  }
+
   // Looking into the state definition, we take the seo information for the corresponding page
   // If no title is provided for the page, the global settings title is passed as a default
   const title = (pageDefinition.seo && pageDefinition.seo.title) || uidl.globals.settings.title

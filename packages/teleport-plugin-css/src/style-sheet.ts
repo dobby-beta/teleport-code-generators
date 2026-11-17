@@ -18,8 +18,8 @@ interface StyleSheetPlugin {
 }
 
 export const createStyleSheetPlugin: ComponentPluginFactory<StyleSheetPlugin> = (config) => {
-  const { fileName = 'style', relativeFontPath = false } = config || {
-    fileName: 'style',
+  const { fileName = 'global-style', relativeFontPath = false } = config || {
+    fileName: 'global-style',
     relativeFontPath: false,
   }
 

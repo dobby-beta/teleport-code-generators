@@ -138,7 +138,7 @@ describe('State bindings in the static HTML export', () => {
     expect(home.search(RUNTIME_LINK)).toBeLessThan(home.indexOf('</head>'))
     expect(fileOf(site, 'about', FileType.HTML)).not.toContain('tq-state')
 
-    const css = fileOf(site, 'style', FileType.CSS)
+    const css = fileOf(site, 'global-style', FileType.CSS)
     expect(css.split(STATE_RUNTIME_CSS.trim())).toHaveLength(2)
 
     // the component exported as a document of its own sits one folder down

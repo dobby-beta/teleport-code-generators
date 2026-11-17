@@ -49,8 +49,8 @@ const createHTMLProjectGenerator = (options: HTMLProjectGeneratorOptions = {}) =
     },
     projectStyleSheet: {
       generator: createComponentGenerator,
-      plugins: [createStyleSheetPlugin({ fileName: 'style', relativeFontPath: true })],
-      fileName: 'style',
+      plugins: [createStyleSheetPlugin({ fileName: 'global-style', relativeFontPath: true })],
+      fileName: 'global-style',
       path: [''],
       importFile: true,
     },

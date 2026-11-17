@@ -43,7 +43,7 @@ describe('packProject, HTML: a downloaded site runs its conditions and clicks', 
     expect($('#tab-1').attr('data-tq-on-click')).toBe('activeTabIndex = 1')
     expect($('#panel-1').attr('hidden')).toBeDefined()
     expect($('#panel-0').attr('hidden')).toBeUndefined()
-    expect(readFileSync(join(root, 'style.css'), 'utf8')).toContain(
+    expect(readFileSync(join(root, 'global-style.css'), 'utf8')).toContain(
       '[data-tq-if][hidden] {\n  display: none !important;\n}'
     )
   })
@@ -53,6 +53,6 @@ describe('packProject, HTML: a downloaded site runs its conditions and clicks', 
 
     expect(readdirSync(root)).not.toContain('tq-state.js')
     expect(readFileSync(join(root, 'index.html'), 'utf8')).not.toContain('tq-state')
-    expect(readFileSync(join(root, 'style.css'), 'utf8')).not.toContain('data-tq-if')
+    expect(readFileSync(join(root, 'global-style.css'), 'utf8')).not.toContain('data-tq-if')
   })
 })

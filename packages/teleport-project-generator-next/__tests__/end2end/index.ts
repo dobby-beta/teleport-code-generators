@@ -44,7 +44,7 @@ describe('React Next Project Generator', () => {
     expect(outputFolder.files.map((file) => file.name)).toContain('package')
     expect(appFile).toBeDefined()
     expect(appFile?.content).not.toContain(`import "antd/dist/antd.css`)
-    expect(appFile?.content).toContain(`import './style.css'`)
+    expect(appFile?.content).toContain(`import './global-style.css'`)
   })
 
   it('runs without crashing and adding external dependencies', async () => {
@@ -80,7 +80,7 @@ describe('React Next Project Generator', () => {
 
     const pagesFolder = result.subFolders.find((folder) => folder.name === 'pages')
     const styleSheet = pagesFolder?.files.find(
-      (file) => file.name === 'style' && file.fileType === FileType.CSS
+      (file) => file.name === 'global-style' && file.fileType === FileType.CSS
     )
     const appFile = pagesFolder?.files.find(
       (file) => file.name === '_app' && file.fileType === FileType.JS
@@ -89,7 +89,7 @@ describe('React Next Project Generator', () => {
     expect(styleSheet).toBeDefined()
     expect(styleSheet?.content).toContain(`--greys-500: #595959`)
     expect(appFile).toBeDefined()
-    expect(appFile?.content).toContain(`import './style.css'`)
+    expect(appFile?.content).toContain(`import './global-style.css'`)
   })
 
   it('creates a default route if a page is marked as fallback', async () => {
