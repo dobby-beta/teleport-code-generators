@@ -107,11 +107,15 @@ export interface PartialGenerationResult {
   >
 }
 
+/** Name (without extension) of the global stylesheet written by generateStyleSheet(). */
+export const GLOBAL_STYLESHEET_NAME = 'global-style'
+
 export interface FrameworkConfigInput {
   dependencies?: Record<string, string>
   globalStyles?: {
     path: string
-    sheetName: string
+    /** Defaults to GLOBAL_STYLESHEET_NAME, the file generateStyleSheet() writes. */
+    sheetName?: string
     isGlobalStylesDependent: boolean
   }
 }
@@ -166,7 +170,7 @@ class NextPartialGenerator {
 
     // Stylesheet generator — same config as createNextProjectGenerator().projectStyleSheet
     this.styleSheetGenerator = createComponentGenerator({
-      plugins: [createStyleSheetPlugin({ fileName: 'global-style' })],
+      plugins: [createStyleSheetPlugin({ fileName: GLOBAL_STYLESHEET_NAME })],
     })
   }
 
@@ -247,7 +251,10 @@ class NextPartialGenerator {
       fileName: '_app',
       fileType: FileType.JS,
       dependencies: configOptions?.dependencies || {},
-      globalStyles: configOptions?.globalStyles,
+      globalStyles: configOptions?.globalStyles && {
+        ...configOptions.globalStyles,
+        sheetName: configOptions.globalStyles.sheetName ?? GLOBAL_STYLESHEET_NAME,
+      },
     })
 
     if (!result.chunks || Object.keys(result.chunks).length === 0) {

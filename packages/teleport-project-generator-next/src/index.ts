@@ -368,7 +368,7 @@ export {
   createNextPagesDataSourcePlugin,
   createNextComponentDataSourcePlugin,
 } from '@teleporthq/teleport-plugin-next-data-source'
-export { createNextPartialGenerator } from './partial'
+export { createNextPartialGenerator, GLOBAL_STYLESHEET_NAME } from './partial'
 export type {
   NextPartialGeneratorOptions,
   PartialGenerationResult,

@@ -197,14 +197,13 @@ describe('Next.js Partial Generator', () => {
       const result = partial.generateFrameworkConfig({
         globalStyles: {
           path: './',
-          sheetName: 'style',
           isGlobalStylesDependent: true,
         },
       })
 
       const jsFile = result.files.find((f) => f.fileType === FileType.JS)
       expect(jsFile).toBeDefined()
-      expect(jsFile.content).toContain("import './style.css'")
+      expect(jsFile.content).toContain("import './global-style.css'")
     })
   })
 

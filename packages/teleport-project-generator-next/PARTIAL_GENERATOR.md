@@ -216,11 +216,13 @@ const result = partial.generateFrameworkConfig({
   dependencies: hasI18n ? { 'next-intl': '^2.0.0' } : {},
   globalStyles: {
     path: './',
-    sheetName: 'style',
+    sheetName: 'global-style', // optional; defaults to GLOBAL_STYLESHEET_NAME
     isGlobalStylesDependent: true,
   },
 })
 ```
+
+`sheetName` must match the stylesheet written by `generateStyleSheet()`, which is `global-style` (exported as `GLOBAL_STYLESHEET_NAME`). It was `style` in earlier versions: callers that still pass `sheetName: 'style'` must switch to `global-style` (or omit it), or `_app.js` will import a file that is no longer written.
 
 ---
 
