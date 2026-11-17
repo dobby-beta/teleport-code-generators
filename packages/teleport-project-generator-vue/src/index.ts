@@ -10,6 +10,7 @@ import pluginCSS, { createStyleSheetPlugin } from '@teleporthq/teleport-plugin-c
 
 import VueTemplate from './project-template'
 import { VueProjectMapping } from './vue-project-mapping'
+import { vueLottiePlugin } from './lottie-plugin'
 
 const createVueProjectGenerator = () => {
   const vueHeadConfigPlugin = createVueHeadConfigPlugin({ metaObjectKey: 'metaInfo' })
@@ -50,6 +51,8 @@ const createVueProjectGenerator = () => {
       path: ['public'],
     },
   })
+
+  generator.addPlugin(vueLottiePlugin)
 
   return generator
 }
